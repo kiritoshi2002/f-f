@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleStatusTab } from '../stores/cart';
 
-const Header = () => {
+  const Header = () => {
   const [totalQuantity, setTotalQuantity] = useState(0);
   const carts = useSelector((store) => store.cart.items);
   const dispatch = useDispatch();
@@ -29,21 +29,16 @@ const Header = () => {
         </Link>
       </div>
 
-      <div className="flex items-center space-x-4">
-        {/* Checkout Link */}
-        <Link
-          to="/checkout"
-          className="hover:text-blue-500 transition duration-200 text-xl font-bold text-gray-700 no-underline"
-        >
-          Checkout
-        </Link>
+      <div className="flex items-center space-x-8">
+        <Link to="/" className=" font-bold text-gray-800 no-underline hover:text-blue-600 transition">Home</Link>
+        <Link to="/about" className=" font-bold text-gray-800 no-underline hover:text-blue-600 transition">About Us</Link>
+        <Link to="/contact" className=" font-bold text-gray-800 no-underline hover:text-blue-600 transition">Contact</Link>
+      </div>
 
-        {/* Cart Icon */}
+      <div className="flex items-center space-x-4">
+
         <div onClick={handleOpenTabCart} className="cursor-pointer relative">
-          <ShoppingCart
-            className="text-gray-700 hover:text-blue-500 transition duration-200"
-            fontSize="large"
-          />
+          <ShoppingCart className="text-gray-700 hover:text-blue-500 transition duration-200" fontSize="large" />
           <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
             {totalQuantity}
           </span>

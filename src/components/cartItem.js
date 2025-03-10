@@ -45,23 +45,17 @@ return (
 
   <div className="flex justify-between items-center w-full mt-1">
     <div className="flex items-center gap-2">
-      <button
-        className="bg-gray-300 rounded-full w-6 h-6 text-[#032b63] font-bold"
-        onClick={handleMinusQuantity}
-      >
-        −
+      <button className="bg-gray-300 rounded-full w-6 h-6 text-[#032b63] font-bold"  onClick={handleMinusQuantity}>
+        -
       </button>
       <span className="text-lg font-semibold">{quantity}</span>
-      <button
-        className="bg-gray-300 rounded-full w-6 h-6 text-[#032b63] font-bold"
-        onClick={handlePlusQuantity}
-      >
+      <button className="bg-gray-300 rounded-full w-6 h-6 text-[#032b63] font-bold" onClick={handlePlusQuantity}>
         +
       </button>
     </div > 
-    <p className=" pt-3 text-lg font-semibold text-[#032b63] min-w-[60px] text-right">₹{detail.price * quantity}</p>
     
-    <img className='pl-6 pb-1'  src={deleteIcon} onClick={handleRemove} />
+    <p className=" pt-3 text-lg font-semibold text-[#032b63] min-w-[60px] text-right">₹{detail.price * quantity}</p>   
+    <img className='pl-6 pb-1'  src={deleteIcon} onClick={handleRemove} alt='remove'/>
   </div>
 
 </div>

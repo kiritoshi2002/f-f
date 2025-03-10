@@ -8,7 +8,7 @@ import cartIcon from '../assets/icon-cart-white.svg';
 import prevIcon from '../assets/icon-previous.svg';
 import nextIcon from '../assets/icon-next.svg';
 
-const Detail = () => {
+  const Detail = () => {
   const { slug } = useParams();
   const [detail, setDetail] = useState(null);
   const [quantity, setQuantity] = useState(1);
@@ -58,35 +58,16 @@ const Detail = () => {
       <div className="main-wrapper flex flex-col py-[20px] md:flex-row md:px-[200px] md:py-[100px] relative bg-lightGrayishBlue">
         <div className="image md:basis-1/2 md:flex md:flex-col md:justify-between">
           <div className="large-image">
-            <img
-              className="object-cover cursor-pointer rounded-xl w-[400px] h-[400px]"
-              src={detail.images.large[value]}
-              alt={detail.name}
-            />
+            <img className="object-cover cursor-pointer rounded-xl w-[400px] h-[400px]" src={detail.images.large[value]} alt={detail.name}/>
             <div className="flex justify-between mt-4">
-              <img
-                onClick={goBack}
-                className="bg-white rounded-full p-4 cursor-pointer"
-                src={prevIcon}
-                alt="go-back"
-              />
-              <img
-                onClick={goForward}
-                className="bg-white rounded-full p-4 cursor-pointer"
-                src={nextIcon}
-                alt="go-forward"
-              />
+              <img onClick={goBack} className="bg-white rounded-full p-4 cursor-pointer" src={prevIcon} alt="go-back" />
+              <img onClick={goForward} className="bg-white rounded-full p-4 cursor-pointer" src={nextIcon} alt="go-forward" />
             </div>
           </div>
           <div className="small-images flex mt-7 space-x-3 justify-center w-[400px]">
             {detail.images.large.map((img, idx) => (
               <div key={idx} className="single-image">
-                <img
-                  onClick={() => setValue(idx)}
-                  className="w-[80px] h-[80px] object-cover cursor-pointer rounded-xl transition-all hover:opacity-25 hover:border-[3px] border-orange"
-                  src={img}
-                  alt={`${detail.name} ${idx + 1}`}
-                />
+                <img onClick={() => setValue(idx)} className="w-[80px] h-[80px] object-cover cursor-pointer rounded-xl transition-all hover:opacity-25 hover:border-[3px] border-orange" src={img} alt={`${detail.name} ${idx + 1}`} />
               </div>
             ))}
           </div>
@@ -135,15 +116,8 @@ const Detail = () => {
                 +
               </button>
             </div>
-            <button
-              onClick={handleAddToCart}
-              className="add-btn border-none bg-azure rounded-lg text-white font-[700] px-[70px] py-[18px] mt-4 md:mt-0 md:py-0 md:text-[14px] transition-all btn-shadow hover:opacity-50"
-            >
-              <img
-                className="inline-block -translate-x-2 -translate-y-[2px] h-[15px]"
-                src={cartIcon}
-                alt="cart-icon"
-              />
+            <button onClick={handleAddToCart} className="add-btn border-none bg-azure rounded-lg text-white font-[700] px-[70px] py-[18px] mt-4 md:mt-0 md:py-0 md:text-[14px] transition-all btn-shadow hover:opacity-50" >
+              <img className="inline-block -translate-x-2 -translate-y-[2px] h-[15px]" src={cartIcon} alt="cart-icon" />
               &nbsp;Add to cart
             </button>
           </div>

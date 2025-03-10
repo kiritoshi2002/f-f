@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createAction, createReducer } from "@reduxjs/toolkit"
+
 
     const initialState ={
     items: localStorage.getItem("carts") ? JSON.parse(localStorage.getItem("carts")) : [],
@@ -31,7 +31,6 @@ import { createAction, createReducer } from "@reduxjs/toolkit"
             if(quantity > 0){
                 state.items[indexProductId].quantity = quantity;
             }else{
-                //  delete state.items[indexProductId];
                 state.items = (state.items).filter(items=> items.productId !== productId);
             }
             localStorage.setItem("carts", JSON.stringify(state.items));

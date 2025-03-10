@@ -16,19 +16,14 @@ const ProductCart = ({ data }) => {
 
   return (
     <div className="bg-[#add8e6] flex items-center justify-center py-10 px-6">
-      <div className="flex flex-wrap justify-center gap-6 max-w-[120px]">
+      <div className="flex flex-wrap justify-center gap-6 max-w-[1200px]">
         <div className="flex flex-col w-[300px] bg-white rounded-lg shadow-2xl transform transition-transform duration-300 hover:scale-105 hover:bg-gray-300">
   
           <div className="flex justify-center items-center w-full">
             <Link to={slug}>
-              <img
-                src={images.large[0]}
-                alt={name}
-                className="h-[300px] w-full object-cover"
-              />
+              <img src={images.large[0]} alt={name} className="h-[300px] w-full object-cover" />
             </Link>
           </div>
-
           <div className="flex flex-col justify-between w-full p-4 flex-grow">
             <div className="product-text">
               <h1 className="text-2xl font-serif text-[#000080] mb-1">{name}</h1>
@@ -49,7 +44,7 @@ const ProductCart = ({ data }) => {
               </button>
             </div>
           </div>
-  
+
         </div>
       </div>
     </div>

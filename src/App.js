@@ -1,11 +1,10 @@
-import React from 'react';
+import React from 'react'; 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './ScrollToTop';
 import Layout from './components/layout';
 import Home from './pages/home';
 import Detail from './pages/detail';
 import Checkout from './pages/checkout';
-import Header from './components/header';
 import Payment from './pages/payment';
 import About from './pages/about';
 import Contact from './pages/contact';
@@ -13,8 +12,7 @@ import Contact from './pages/contact';
 function App() {
   return (
     <Router>
-      <ScrollToTop /> 
-      <Header />
+      <ScrollToTop />
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />

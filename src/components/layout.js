@@ -1,7 +1,8 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom' 
 import Header from './header'
-import CartTab from './cartTab' 
+import CartTab from './cartTab'
+import Filter from './filter'
 
 const Layout = () => {
   return (
@@ -10,6 +11,7 @@ const Layout = () => {
         <Header />
         <Outlet />
       </main>
+      <Filter />
       <CartTab />
     </div>
   );

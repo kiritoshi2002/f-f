@@ -9,7 +9,7 @@ const CartTab = () => {
   const statusTab =useSelector(store => store.cart.statusTab);
   const dispatch = useDispatch();
 
-  const handleCloseTabCart= () =>{  
+  const handleCloseTabCart= () => {  
   dispatch(toggleStatusTab());
 };
   const handleClearCart = () => {

@@ -4,6 +4,7 @@ import MECALON01 from "../assets/MECALON 01.png";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleCart, toggleFilter } from "../stores/cart";
+// import SearchIco from "./src/assets/search.svg";
 
 const Header = ({ query, setQuery }) => {
   const [totalQuantity, setTotalQuantity] = useState(0);

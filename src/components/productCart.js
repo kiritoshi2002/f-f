@@ -2,6 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from '../stores/cart';
+import Carousel from 'react-bootstrap/Carousel';
+// import ExampleCarouselImage from 'components/ExampleCarouselImage';
+
 
 const ProductCart = ({ data }) => {
   const { id, name, price, images, slug, description ,type} = data;
@@ -21,7 +24,14 @@ const ProductCart = ({ data }) => {
   
           <div className="flex justify-center items-center w-full">
             <Link to={slug}>
-              <img src={images.large[0]} alt={name} className="h-[300px] w-full object-cover" />
+                <Carousel>
+                <Carousel.Item interval={500}>
+                  <img src={images.large[0]} alt={name} className="h-[300px] w-full object-cover" />
+                </Carousel.Item>
+                <Carousel.Item interval={500}>
+                <img src={images.large[1]} alt={name} className="h-[300px] w-full object-cover" />
+                </Carousel.Item>
+              </Carousel>
             </Link>
           </div>
           <div className="flex flex-col justify-between w-full p-4 flex-grow">
@@ -46,6 +56,7 @@ const ProductCart = ({ data }) => {
           </div>
 
         </div>
+
       </div>
    
   );

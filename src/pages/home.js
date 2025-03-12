@@ -17,9 +17,9 @@ const Home = () => {
 
   return (
     <>
-      <Header query={query} setQuery={setQuery} /> {/* Include Header with search props */}
-      <div className="p-4 mt-20">
-        <div className="container mx-auto px-4">
+      <Header query={query} setQuery={setQuery} /> 
+      <div className="p-4 mt-12 bg-[#f4f4f4] px-5">
+      
           <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {filteredProducts.length > 0 ? (
               filteredProducts.map((product, key) => (
@@ -33,7 +33,7 @@ const Home = () => {
               </p>
             )}
           </div>
-        </div>
+        
       </div>
     </>
   );

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { products } from '../products';
 import { addToCart } from '../stores/cart';
+import Header from '../components/header';
 
 import cartIcon from '../assets/icon-cart-white.svg';
 import prevIcon from '../assets/icon-previous.svg';
@@ -54,7 +55,9 @@ import nextIcon from '../assets/icon-next.svg';
   if (!detail) return <p>Loading...</p>;
 
   return (
-    <main className="flex justify-center pt-15">
+    <>
+    <Header/>
+     <main className="flex justify-center pt-15">
       <div className="main-wrapper flex flex-col py-[20px] md:flex-row md:px-[200px] md:py-[100px] relative bg-lightGrayishBlue">
         <div className="image md:basis-1/2 md:flex md:flex-col md:justify-between">
           <div className="large-image">
@@ -124,6 +127,8 @@ import nextIcon from '../assets/icon-next.svg';
         </div>
       </div>
     </main>
+    </>
+   
   );
 };
 

@@ -5,7 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
-
+      fontFamily: {
+        sans: ['Lato', 'sans-serif'], // Add Lato as the default sans-serif font
+      },
       colors: {
         orange: "hsl(26, 100%, 55%)",
         azure: "hsl(185, 80%, 52%)",
@@ -18,7 +20,6 @@ module.exports = {
         white: "hsl(0, 0%, 100%)",
         black: "hsl(0, 0%, 0%)",
         lightBlack : "rgba(0, 0, 0, 0.75);"
-        
       },
       screens: {
         sm: "376px",
@@ -30,4 +31,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};

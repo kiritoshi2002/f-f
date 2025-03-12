@@ -16,7 +16,7 @@ const Header = ({ query, setQuery }) => {
   }, [carts]);
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full font-sans">
       <nav className="fixed top-0 left-0 w-full bg-[#add8e6] shadow-md py-2 px-6 flex items-center justify-between z-50">
         <div className="flex items-center space-x-4">
           <img src={MECALON01} alt="Finding Fish" className="h-8" />

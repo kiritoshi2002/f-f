@@ -1,12 +1,12 @@
-import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import CartItem from './cartItem';
 import { toggleStatusTab, clearCart } from '../stores/cart';
 import { Link } from 'react-router-dom';
 
 const CartTab = () => {
   const carts = useSelector((store) => store.cart.items);
-  const statusTab = useSelector((store) => store.cart.statusTab); 
+  const statusTab = useSelector((store) => store.cart.statusTab);
   const dispatch = useDispatch();
 
   const handleCloseTabCart = () => {
@@ -19,7 +19,7 @@ const CartTab = () => {
 
   return (
     <div
-      className={`fixed top-0 right-0 bg-white shadow-lg w-90 h-full border-l border-gray-300 transition-transform duration-300 ${
+      className={`fixed top-0 right-0 bg-white shadow-lg w-96 h-full border-l border-gray-300 transition-transform duration-300 ${
         statusTab ? 'translate-x-0' : 'translate-x-full'
       }`}
     >
@@ -43,26 +43,31 @@ const CartTab = () => {
           </div>
         ) : (
           <>
-            <div className="flex-1 overflow-y-auto px-3">
+            {/* Items List with Scroll */}
+            <div className="flex-1 overflow-y-auto px-3 pb-56 no-scrollbar"> {/* Added pb-24 to prevent overlap with buttons */}
               {carts.map((item, key) => (
                 <CartItem key={key} data={item} />
               ))}
             </div>
 
-            <div className="w-full flex fixed bottom-0 left-0 bg-white border-t border-gray-300 shadow-md">
-              <button
-                className="w-1/2 bg-red-500 text-white px-4 py-3 text-center hover:bg-red-700 transition"
-                onClick={handleClearCart}
-              >
-                Clear Cart
-              </button>
-              <Link
-                to="/checkout"
-                className="w-1/2 text-center bg-blue-500 text-white px-4 py-3 hover:bg-blue-700 transition decoration-none"
-              >
-                Checkout
-              </Link>
-            </div>
+            {/* Buttons Fixed at the Bottom */}
+            <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-300 shadow-md p-4">
+  <div className="w-full flex gap-4">
+    <button
+      className="w-1/2 bg-red-500 text-white px-4 py-3 text-center hover:bg-red-700 transition rounded"
+      onClick={handleClearCart}
+    >
+      Clear Cart
+    </button>
+    <Link
+      to="/checkout"
+      className="w-1/2 text-center bg-blue-500 text-white px-4 py-3 hover:bg-blue-700 transition rounded no-underline"
+    >
+      Checkout
+    </Link>
+  </div>
+</div>
+
           </>
         )}
       </div>

@@ -9,18 +9,20 @@ const Home = () => {
   const getFilteredItems = (query, items) => {
     if (!query) return items;
     return items.filter((product) =>
-      product.name.toLowerCase().includes(query.toLowerCase())
+      product.name.toLowerCase().includes(query.toLowerCase()) || 
+      product.price.toString().includes(query) 
     );
   };
+  
 
   const filteredProducts = getFilteredItems(query, products);
 
   return (
     <>
       <Header query={query} setQuery={setQuery} /> 
-      <div className="p-4 mt-12 bg-[#f4f4f4] px-5">
+      <div className="p-4 mt-12 bg-[#f4f4f4] px-5 ">
       
-          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 no-scrollbar">
             {filteredProducts.length > 0 ? (
               filteredProducts.map((product, key) => (
                 <div key={key} className="flex justify-center">

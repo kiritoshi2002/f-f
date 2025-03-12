@@ -26,18 +26,18 @@ const ProductCart = ({ data }) => {
           </div>
           <div className="flex flex-col justify-between w-full p-4 flex-grow">
             <div className="product-text">
-              <h1 className="text-2xl font-serif text-[#000080] mb-1">{name}</h1>
+              <h1 className="text-2xl font-sans text-[#000080] mb-1">{name}</h1>
               <h2 className="text-xs font-sans font-normal uppercase text-[#000080] tracking-widest mb-2">
                 {type}
               </h2>
-              <p className="text-sm font-serif text-[#8d8d8d] leading-relaxed mb-2">
+              <p className="text-sm font-sans text-[#8d8d8d] leading-relaxed mb-2">
                 {description}
               </p>
             </div>
   
             <div className="product-price-btn flex justify-between items-center">
-              <p className="text-xl font-serif text-[#000080]">
-                <span className="text-2xl font-serif">{price}</span>$
+              <p className="text-xl font-sans text-[#000080]">
+                <span className="text-2xl font-sans">{price}</span>$
               </p>
               <button className="bg-[#008080] text-white px-4 py-2 rounded-full uppercase font-sans text-xs font-medium tracking-widest hover:bg-[#87ceeb] transition-colors" onClick={() => handleAddToCart(id)}>
                Add To Cart

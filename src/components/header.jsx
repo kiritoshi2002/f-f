@@ -3,7 +3,7 @@ import { ShoppingCart, Menu } from "@mui/icons-material";
 import MECALON01 from "../assets/MECALON 01.png";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleCart, toggleFilter } from "../stores/cart";
+import { toggleStatusTab, toggleStatusFilter } from "../stores/cart";
 // import SearchIco from "./src/assets/search.svg";
 
 const Header = ({ query, setQuery }) => {
@@ -16,8 +16,16 @@ const Header = ({ query, setQuery }) => {
     setTotalQuantity(total);
   }, [carts]);
 
+  const handleOpenTabCart = () => {
+    dispatch(toggleStatusTab());
+}
+
+const handleOpenFilter = () => {
+  dispatch(toggleStatusFilter());
+}
+
   return (
-    <div className="relative w-full font-sans">
+    <div className="relative w-full font-sans ">
       <nav className="fixed top-0 left-0 w-full bg-[#add8e6] shadow-md py-2 px-6 flex items-center justify-between z-50">
         <div className="flex items-center space-x-4">
           <img src={MECALON01} alt="Finding Fish" className="h-8" />
@@ -27,13 +35,13 @@ const Header = ({ query, setQuery }) => {
         </div>
 
         <div className="absolute left-1/2 transform -translate-x-1/2 flex space-x-8">
-          <Link to="/" className="font-bold text-gray-800 no-underline hover:text-blue-600 transition">
+          <Link to="/" className="font-bold text-xl text-gray-800 no-underline hover:text-blue-600 transition">
             Home
           </Link>
-          <Link to="/about" className="font-bold text-gray-800 no-underline hover:text-blue-600 transition">
+          <Link to="/about" className="font-bold text-xl text-gray-800 no-underline hover:text-blue-600 transition">
             About Us
           </Link>
-          <Link to="/contact" className="font-bold text-gray-800 no-underline hover:text-blue-600 transition">
+          <Link to="/contact" className="font-bold text-xl text-gray-800 no-underline hover:text-blue-600 transition">
             Contact
           </Link>
         </div>
@@ -47,8 +55,7 @@ const Header = ({ query, setQuery }) => {
             className="px-3 py-1 border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-64"
           />
 
-          {/* Shopping Cart Icon */}
-          <div onClick={() => dispatch(toggleCart())} className="cursor-pointer relative">
+          <div  onClick={handleOpenTabCart} className="cursor-pointer relative">
             <ShoppingCart className="text-gray-700 hover:text-blue-500 transition duration-200" fontSize="large" />
             {totalQuantity > 0 && (
               <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
@@ -57,13 +64,9 @@ const Header = ({ query, setQuery }) => {
             )}
           </div>
 
-          {/* Filter Icon */}
-          
-
-      {/* Black Div Below Nav */}
       <div className="fixed top-[52px] left-0 w-full h-12 bg-[#f4f4f4]">
-         <div onClick={() => dispatch(toggleFilter())} className="cursor-pointer">
-            <Menu className="text-gray-700 hover:text-blue-500 transition duration-200" fontSize="large" />
+         <div>
+            <Menu   onClick={handleOpenFilter}className="text-gray-700 hover:text-blue-500 transition duration-200 cursor-pointer" fontSize="large" />
           </div> 
       </div>
  

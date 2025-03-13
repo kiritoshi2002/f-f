@@ -2,12 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     items: localStorage.getItem("carts") ? JSON.parse(localStorage.getItem("carts")) : [],
-    statusTab: false
-}
+    statusTab: false,
+    statusFilter: false
+};
 const cartSlice = createSlice({
     name: 'cart',
     initialState,
     reducers: {
+
       addToCart(state, action) {
         const { productId, quantity } = action.payload;
         const indexProductId = state.items.findIndex((item) => item.productId === productId);
@@ -41,31 +43,27 @@ const cartSlice = createSlice({
         state.items = [];
         localStorage.removeItem('carts');
       },
-  
-      toggleStatusTab(state) {
-        state.statusTab = !state.statusTab;
+      
+      toggleStatusTab(state){
+        if(state.statusTab === false){
+            state.statusTab = true;
+        }else{
+            state.statusTab = false;
+        }
       },
-  
-      toggleCart(state) {
-        state.statusTab = !state.statusTab; // Use the same logic as toggleStatusTab
+
+      toggleStatusFilter(state){
+        if(state.statusFilter === false){
+          state.statusFilter = true;
+      }else{
+          state.statusFilter = false;
+      }
       },
-  
-      toggleFilter(state) {
-        // Add logic for toggling the filter if needed
-        // For now, reuse the same logic as toggleStatusTab
-        state.statusTab = !state.statusTab;
-      },
-    },
+     
+    }
+
   });
   
-  export const {
-    addToCart,
-    changeQuantity,
-    removeFromCart,
-    clearCart,
-    toggleStatusTab,
-    toggleCart,
-    toggleFilter,
-  } = cartSlice.actions;
+  export const { addToCart, changeQuantity, removeFromCart, clearCart, toggleStatusTab, toggleStatusFilter} = cartSlice.actions;
   
   export default cartSlice.reducer;

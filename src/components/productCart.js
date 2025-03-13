@@ -25,10 +25,10 @@ const ProductCart = ({ data }) => {
           <div className="flex justify-center items-center w-full">
             <Link to={slug}>
                 <Carousel>
-                <Carousel.Item interval={500}>
+                <Carousel.Item interval={2500}>
                   <img src={images.large[0]} alt={name} className="h-[300px] w-full object-cover" />
                 </Carousel.Item>
-                <Carousel.Item interval={500}>
+                <Carousel.Item interval={2500}>
                 <img src={images.large[1]} alt={name} className="h-[300px] w-full object-cover" />
                 </Carousel.Item>
               </Carousel>

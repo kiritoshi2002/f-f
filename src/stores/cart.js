@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     items: localStorage.getItem("carts") ? JSON.parse(localStorage.getItem("carts")) : [],
     statusTab: false,
-    statusFilter: false
+    statusFilter: false,
+    sortingOrder:""
 };
 const cartSlice = createSlice({
     name: 'cart',
@@ -59,11 +60,15 @@ const cartSlice = createSlice({
           state.statusFilter = false;
       }
       },
+
+      setSortingOrder: (state, action) => {
+        state.sortingOrder = action.payload;
+      },
      
     }
 
   });
   
-  export const { addToCart, changeQuantity, removeFromCart, clearCart, toggleStatusTab, toggleStatusFilter} = cartSlice.actions;
+  export const { addToCart, changeQuantity, removeFromCart, clearCart, toggleStatusTab, toggleStatusFilter,setSortingOrder } = cartSlice.actions;
   
   export default cartSlice.reducer;

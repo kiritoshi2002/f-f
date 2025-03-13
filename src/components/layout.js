@@ -1,6 +1,5 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom'; 
-// import Header from './header';
 import { useSelector } from 'react-redux'
 import CartTab from './cartTab';
 import Filter from './filter';

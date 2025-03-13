@@ -1,14 +1,18 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleStatusFilter } from "../stores/cart";
+import { toggleStatusFilter, setSortingOrder } from "../stores/cart";
 
 const Filter = () => {
   const statusFilter = useSelector((store) => store.cart.statusFilter);
-
+  const sortingOrder = useSelector((store) => store.cart.sortingOrder);
   const dispatch = useDispatch();
 
   const handleCloseFilter = () => {
     dispatch(toggleStatusFilter());
+  };
+
+  const handleSortChange = (e) => {
+    dispatch(setSortingOrder(e.target.value));
   };
 
   return (
@@ -26,7 +30,19 @@ const Filter = () => {
           &times;
         </button>
       </div>
-      {/*  Filter Content  */}
+
+      {/* Sorting Dropdown */}
+      <div className="p-4">
+        <label className="block text-gray-700 font-medium">Sort by Price:</label>
+        <select
+          className="w-full p-2 border rounded-md"
+          value={sortingOrder}
+          onChange={handleSortChange}
+        >
+          <option value="LowToHigh">Low to High</option>
+          <option value="HighToLow">High to Low</option>
+        </select>
+      </div>
     </div>
   );
 };

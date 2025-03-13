@@ -4,7 +4,9 @@ const initialState = {
     items: localStorage.getItem("carts") ? JSON.parse(localStorage.getItem("carts")) : [],
     statusTab: false,
     statusFilter: false,
-    sortingOrder:""
+    sortingOrder:"",
+    minPrice: "",    
+    maxPrice: ""  
 };
 const cartSlice = createSlice({
     name: 'cart',
@@ -64,11 +66,20 @@ const cartSlice = createSlice({
       setSortingOrder: (state, action) => {
         state.sortingOrder = action.payload;
       },
+
+      setMinPrice(state, action) {
+        state.minPrice = action.payload;
+    },
+
+    setMaxPrice(state, action) {
+        state.maxPrice = action.payload;
+    }
      
     }
 
   });
   
-  export const { addToCart, changeQuantity, removeFromCart, clearCart, toggleStatusTab, toggleStatusFilter,setSortingOrder } = cartSlice.actions;
+  export const { addToCart, changeQuantity, removeFromCart, clearCart, toggleStatusTab, toggleStatusFilter,setSortingOrder,setMinPrice,
+    setMaxPrice } = cartSlice.actions;
   
   export default cartSlice.reducer;

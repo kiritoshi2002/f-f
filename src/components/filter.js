@@ -1,10 +1,12 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleStatusFilter, setSortingOrder } from "../stores/cart";
+import { toggleStatusFilter, setSortingOrder, setMinPrice, setMaxPrice } from "../stores/cart";
 
 const Filter = () => {
   const statusFilter = useSelector((store) => store.cart.statusFilter);
   const sortingOrder = useSelector((store) => store.cart.sortingOrder);
+  const minPrice = useSelector((store) => store.cart.minPrice);
+  const maxPrice = useSelector((store) => store.cart.maxPrice);
   const dispatch = useDispatch();
 
   const handleCloseFilter = () => {
@@ -13,6 +15,14 @@ const Filter = () => {
 
   const handleSortChange = (e) => {
     dispatch(setSortingOrder(e.target.value));
+  };
+
+  const handleMinPriceChange = (e) => {
+    dispatch(setMinPrice(e.target.value));
+  };
+
+  const handleMaxPriceChange = (e) => {
+    dispatch(setMaxPrice(e.target.value));
   };
 
   return (
@@ -43,6 +53,32 @@ const Filter = () => {
           <option value="HighToLow">High to Low</option>
         </select>
       </div>
+
+      {/* Min Price Input */}
+      <div className="p-4">
+  <label className="block text-gray-700 font-medium mb-2">Price Range:</label>
+  <div className="flex gap-2">
+    {/* Min Price Input */}
+    <input
+      type="number"
+      className="w-1/2 p-2 border rounded-md"
+      value={minPrice}
+      onChange={handleMinPriceChange}
+      placeholder="Min"
+    />
+    
+    {/* Max Price Input */}
+    <input
+      type="number"
+      className="w-1/2 p-2 border rounded-md"
+      value={maxPrice}
+      onChange={handleMaxPriceChange}
+      placeholder="Max"
+    />
+  </div>
+</div>
+      <button className="w-1/2 p-2 border rounded-md">CLEAR FILTERS</button>
+      
     </div>
   );
 };

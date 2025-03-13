@@ -7,6 +7,8 @@ import { products } from "../products";
 const Home = () => {
   const [query, setQuery] = useState("");
   const sortingOrder = useSelector((store) => store.cart.sortingOrder);
+  const minPrice = useSelector((store) => store.cart.minPrice);
+  const maxPrice = useSelector((store) => store.cart.maxPrice);
 
   const getFilteredItems = (query, items) => {
     if (!query) return items;
@@ -23,6 +25,19 @@ const Home = () => {
     filteredProducts = [...filteredProducts].sort((a, b) => a.price - b.price);
   } else if (sortingOrder === "HighToLow") {
     filteredProducts = [...filteredProducts].sort((a, b) => b.price - a.price);
+  }
+
+  // Apply Price Range Filter
+  if (minPrice) {
+    filteredProducts = filteredProducts.filter(
+      (product) => product.price >= parseFloat(minPrice)
+    );
+  }
+
+  if (maxPrice) {
+    filteredProducts = filteredProducts.filter(
+      (product) => product.price <= parseFloat(maxPrice)
+    );
   }
 
   return (

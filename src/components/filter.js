@@ -25,6 +25,13 @@ const Filter = () => {
     dispatch(setMaxPrice(e.target.value));
   };
 
+  const handleClearFilters = () => {
+    dispatch(setSortingOrder("LowToHigh")); // Reset sorting to default
+    dispatch(setMinPrice("")); // Clear min price
+    dispatch(setMaxPrice("")); // Clear max price
+  };
+  
+
   return (
     <div
       className={`fixed top-0 left-0 bg-white shadow-lg w-80 h-full border-r border-gray-300 transition-transform duration-300 ${
@@ -77,7 +84,13 @@ const Filter = () => {
     />
   </div>
 </div>
-      <button className="w-1/2 p-2 border rounded-md">CLEAR FILTERS</button>
+<button 
+  onClick={handleClearFilters} 
+  className="w-1/2 p-2 border rounded-md bg-gray-200 hover:bg-gray-300 transition"
+>
+  CLEAR FILTERS
+</button>
+
       
     </div>
   );

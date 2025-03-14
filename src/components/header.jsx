@@ -25,7 +25,7 @@ const Header = ({ query, setQuery }) => {
 
   return (
     <div className="relative w-full font-sans">
-      {/* Navbar */}
+ 
       <nav className="fixed top-0 left-0 w-full bg-[#add8e6] shadow-md py-2 px-6 flex items-center justify-between z-50 h-12">
         <div className="flex items-center space-x-4">
           <img src={MECALON01} alt="Finding Fish" className="h-8" />
@@ -35,13 +35,22 @@ const Header = ({ query, setQuery }) => {
         </div>
 
         <div className="absolute left-1/2 transform -translate-x-1/2 flex space-x-8">
-          <Link to="/" className="font-bold text-xl text-gray-800 no-underline hover:text-blue-600 transition">
+          <Link
+            to="/"
+            className="font-bold text-xl text-gray-800 no-underline hover:text-blue-600 transition"
+          >
             Home
           </Link>
-          <Link to="/about" className="font-bold text-xl text-gray-800 no-underline hover:text-blue-600 transition">
+          <Link
+            to="/about"
+            className="font-bold text-xl text-gray-800 no-underline hover:text-blue-600 transition"
+          >
             About Us
           </Link>
-          <Link to="/contact" className="font-bold text-xl text-gray-800 no-underline hover:text-blue-600 transition">
+          <Link
+            to="/contact"
+            className="font-bold text-xl text-gray-800 no-underline hover:text-blue-600 transition"
+          >
             Contact
           </Link>
         </div>
@@ -56,7 +65,10 @@ const Header = ({ query, setQuery }) => {
           />
 
           <div onClick={handleOpenTabCart} className="cursor-pointer relative">
-            <ShoppingCart className="text-gray-700 hover:text-blue-500 transition duration-200" fontSize="large" />
+            <ShoppingCart
+              className="text-gray-700 hover:text-blue-500 transition duration-200"
+              fontSize="large"
+            />
             {totalQuantity > 0 && (
               <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
                 {totalQuantity}
@@ -66,9 +78,8 @@ const Header = ({ query, setQuery }) => {
         </div>
       </nav>
 
-      {/* Menu Div */}
       <div className="fixed top-12 left-0 w-full h-12 bg-[#f4f4f4]">
-        <div className="pl-4"> {/* Add padding to align the icon */}
+        <div className="pl-4">
           <Menu
             onClick={handleOpenFilter}
             className="text-gray-700 hover:text-blue-500 transition duration-200 cursor-pointer"

@@ -1,20 +1,23 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom'; 
-import { useSelector } from 'react-redux'
-import CartTab from './cartTab';
-import Filter from './filter';
+import React from "react";
+import { Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
+import CartTab from "./cartTab";
+import Filter from "./filter";
 import Header from "../components/header";
 
 const Layout = () => {
-  const statusTabCart = useSelector(store => store.cart.statusTab);
-  const statusFilterbar = useSelector(store => store.cart.statusFilter);
+  const statusTabCart = useSelector((store) => store.cart.statusTab);
+  const statusFilterbar = useSelector((store) => store.cart.statusFilter);
   return (
-    
     <div>
-      <Header/>
-    <main
+      <Header />
+      <main
         className={`max-w-full m-auto p-5 transform transition-transform duration-500 ${
-          statusTabCart ? '-translate-x-56' : statusFilterbar ? 'translate-x-56' : ''
+          statusTabCart
+            ? "-translate-x-56"
+            : statusFilterbar
+            ? "translate-x-56"
+            : ""
         }`}
       >
         <Outlet />
@@ -23,6 +26,6 @@ const Layout = () => {
       <CartTab />
     </div>
   );
-}
+};
 
 export default Layout;

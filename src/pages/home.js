@@ -9,29 +9,29 @@ const Home = () => {
   const sortingOrder = useSelector((store) => store.cart.sortingOrder);
   const minPrice = useSelector((store) => store.cart.minPrice);
   const maxPrice = useSelector((store) => store.cart.maxPrice);
-  const distributorFilter = useSelector((store) => store.cart.distributorFilter); // Add distributorFilte
+  const distributorFilter = useSelector(
+    (store) => store.cart.distributorFilter
+  );
 
   const getFilteredItems = (query, items) => {
     if (!query) return items;
-    return items.filter((product) =>
-      product.name.toLowerCase().includes(query.toLowerCase()) ||
-      product.price.toString().includes(query)
+    return items.filter(
+      (product) =>
+        product.name.toLowerCase().includes(query.toLowerCase()) ||
+        product.price.toString().includes(query)
     );
   };
 
   let filteredProducts = getFilteredItems(query, products);
 
-  // Apply Sorting
   if (sortingOrder === "LowToHigh") {
     filteredProducts = [...filteredProducts].sort((a, b) => a.price - b.price);
   } else if (sortingOrder === "HighToLow") {
     filteredProducts = [...filteredProducts].sort((a, b) => b.price - a.price);
   } else {
-    // Reset to original order (based on id) when sortingOrder is empty
     filteredProducts = [...filteredProducts].sort((a, b) => a.id - b.id);
   }
 
-  // Apply Price Range Filter
   if (minPrice) {
     filteredProducts = filteredProducts.filter(
       (product) => product.price >= parseFloat(minPrice)

@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import CartItem from './cartItem';
 import { toggleStatusTab, clearCart } from '../stores/cart';
 import { Link } from 'react-router-dom';
+import { Modal, Button } from 'react-bootstrap';
 
 const CartTab = () => {
   const carts = useSelector((store) => store.cart.items);
   const statusTab = useSelector((store) => store.cart.statusTab);
+  const [showClearModal, setShowClearModal] = useState(false); // State for clear cart modal
   const dispatch = useDispatch();
 
   const handleCloseTabCart = () => {
@@ -14,10 +16,16 @@ const CartTab = () => {
   };
 
   const handleClearCart = () => {
-    const confirmClear = window.confirm("Are you sure you want to clear your cart?");
-    if (confirmClear) {
-      dispatch(clearCart());
-    }
+    setShowClearModal(true); // Show confirmation modal
+  };
+
+  const confirmClearCart = () => {
+    dispatch(clearCart());
+    setShowClearModal(false); // Close modal
+  };
+
+  const cancelClearCart = () => {
+    setShowClearModal(false); // Close modal
   };
 
   return (
@@ -74,6 +82,24 @@ const CartTab = () => {
           </>
         )}
       </div>
+
+      {/* Clear Cart Confirmation Modal */}
+      <Modal show={showClearModal} onHide={cancelClearCart} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Confirm Clear Cart</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Are you sure you want to clear your cart? This action cannot be undone.
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={cancelClearCart}>
+            Cancel
+          </Button>
+          <Button variant="danger" onClick={confirmClearCart}>
+            Clear Cart
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

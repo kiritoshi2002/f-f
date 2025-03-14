@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 import CartTab from './cartTab';
 import Filter from './filter';
+import Header from "../components/header";
 
 const Layout = () => {
   const statusTabCart = useSelector(store => store.cart.statusTab);
@@ -10,6 +11,7 @@ const Layout = () => {
   return (
     
     <div>
+      <Header/>
     <main
         className={`max-w-full m-auto p-5 transform transition-transform duration-500 ${
           statusTabCart ? '-translate-x-56' : statusFilterbar ? 'translate-x-56' : ''

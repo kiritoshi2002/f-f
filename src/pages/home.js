@@ -9,6 +9,7 @@ const Home = () => {
   const sortingOrder = useSelector((store) => store.cart.sortingOrder);
   const minPrice = useSelector((store) => store.cart.minPrice);
   const maxPrice = useSelector((store) => store.cart.maxPrice);
+  const distributorFilter = useSelector((store) => store.cart.distributorFilter); // Add distributorFilte
 
   const getFilteredItems = (query, items) => {
     if (!query) return items;
@@ -25,6 +26,9 @@ const Home = () => {
     filteredProducts = [...filteredProducts].sort((a, b) => a.price - b.price);
   } else if (sortingOrder === "HighToLow") {
     filteredProducts = [...filteredProducts].sort((a, b) => b.price - a.price);
+  } else {
+    // Reset to original order (based on id) when sortingOrder is empty
+    filteredProducts = [...filteredProducts].sort((a, b) => a.id - b.id);
   }
 
   // Apply Price Range Filter
@@ -37,6 +41,12 @@ const Home = () => {
   if (maxPrice) {
     filteredProducts = filteredProducts.filter(
       (product) => product.price <= parseFloat(maxPrice)
+    );
+  }
+
+  if (distributorFilter) {
+    filteredProducts = filteredProducts.filter(
+      (product) => product.distributor === distributorFilter
     );
   }
 

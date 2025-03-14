@@ -6,7 +6,8 @@ const initialState = {
     statusFilter: false,
     sortingOrder:"",
     minPrice: "",    
-    maxPrice: ""  
+    maxPrice: "" ,
+    distributorFilter: "" 
 };
 const cartSlice = createSlice({
     name: 'cart',
@@ -73,13 +74,16 @@ const cartSlice = createSlice({
 
     setMaxPrice(state, action) {
         state.maxPrice = action.payload;
-    }
+    },
+    setDistributorFilter(state, action) {  // <-- New action
+      state.distributorFilter = action.payload;
+  }
      
     }
 
   });
   
   export const { addToCart, changeQuantity, removeFromCart, clearCart, toggleStatusTab, toggleStatusFilter,setSortingOrder,setMinPrice,
-    setMaxPrice } = cartSlice.actions;
+    setMaxPrice,setDistributorFilter } = cartSlice.actions;
   
   export default cartSlice.reducer;

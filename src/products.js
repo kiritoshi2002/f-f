@@ -11,7 +11,9 @@ export const products = [
     },
     type: 'Dried Fish',
     description: 'A flavorful and protein-rich dried fish, perfect for traditional seafood dishes.',
-    slug: 'baracuda-dried'
+    slug: 'baracuda-dried',
+     distributor: 'Deep Sea Foods'
+    
   },
   {
     id: 2,
@@ -25,7 +27,8 @@ export const products = [
     },
     type: 'Dried Fish',
     description: 'Known for its mild yet rich taste, ideal for soups and stews.',
-    slug: 'croaker-dried'
+    slug: 'croaker-dried',
+    distributor: 'SeaFood Ltd'
   },
   {
     id: 3,
@@ -39,7 +42,8 @@ export const products = [
     },
     type: 'Dried Fish',
     description: 'A delicacy with a firm texture, best enjoyed fried or in curry preparations.',
-    slug: 'lizard-fish-dried'
+    slug: 'lizard-fish-dried',
+    distributor: 'Ocean Fresh',
   },
   {
     id: 4,
@@ -53,7 +57,8 @@ export const products = [
     },
     type: 'Dried Fish',
     description: 'A soft-textured dried fish with a mild sweetness, perfect for grilling or curries.',
-    slug: 'pink-perch'
+    slug: 'pink-perch',
+     distributor: 'Deep Sea Foods'
   },
   {
     id: 5,
@@ -67,7 +72,8 @@ export const products = [
     },
     type: 'Dried Fish',
     description: 'A small but tasty dried fish, commonly used in South Indian and Sri Lankan cuisine.',
-    slug: 'silver-belly-dried'
+    slug: 'silver-belly-dried',
+    distributor: 'SeaFood Ltd'
   },
   {
     id: 6,
@@ -81,7 +87,8 @@ export const products = [
     },
     type: 'Dried Fish',
     description: 'A unique and nutritious dried fish with a strong flavor, loved by seafood enthusiasts.',
-    slug: 'shark-dried'
+    slug: 'shark-dried',
+    distributor: 'SeaFood Ltd'
   },
   {
     id: 7,
@@ -95,7 +102,8 @@ export const products = [
     },
     type: 'Dried Fish',
     description: 'a tender and flavorful fish, perfect for aromatic curries. making it a great choice for traditional seafood dishes.',
-    slug: 'pulli-motha'
+    slug: 'pulli-motha',
+    distributor: 'Ocean Fresh',
   },
   {
     id: 8,
@@ -109,6 +117,7 @@ export const products = [
     },
     type: 'Dried Fish',
     description: 'A popular dried fish variety, high in omega-3 and great for deep-frying or curries.',
-    slug: 'ayla'
+    slug: 'ayla',
+    distributor: 'SeaFood Ltd'
   }
 ];

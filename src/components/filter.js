@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleStatusFilter, setSortingOrder, setMinPrice, setMaxPrice } from "../stores/cart";
+import { toggleStatusFilter, setSortingOrder, setMinPrice, setMaxPrice,setDistributorFilter } from "../stores/cart";
 
 const Filter = () => {
   const statusFilter = useSelector((store) => store.cart.statusFilter);
@@ -26,11 +26,22 @@ const Filter = () => {
   };
 
   const handleClearFilters = () => {
-    dispatch(setSortingOrder("LowToHigh")); // Reset sorting to default
-    dispatch(setMinPrice("")); // Clear min price
-    dispatch(setMaxPrice("")); // Clear max price
+    dispatch(setSortingOrder("")); 
+    dispatch(setMinPrice("")); 
+    dispatch(setMaxPrice("")); 
+    dispatch(setDistributorFilter(""));
   };
   
+  const distributors = ["Deep Sea Foods", "Ocean Fresh", "SeaFood Ltd"];
+  const distributorFilter = useSelector((store) => store.cart.distributorFilter);
+  
+
+
+
+  const handleDistributorChange = (distributor) => {
+    
+    dispatch(setDistributorFilter(distributor));
+};
 
   return (
     <div
@@ -48,7 +59,7 @@ const Filter = () => {
         </button>
       </div>
 
-      {/* Sorting Dropdown */}
+      
       <div className="p-4">
         <label className="block text-gray-700 font-medium">Sort by Price:</label>
         <select
@@ -61,11 +72,11 @@ const Filter = () => {
         </select>
       </div>
 
-      {/* Min Price Input */}
+      
       <div className="p-4">
   <label className="block text-gray-700 font-medium mb-2">Price Range:</label>
   <div className="flex gap-2">
-    {/* Min Price Input */}
+    
     <input
       type="number"
       className="w-1/2 p-2 border rounded-md"
@@ -74,7 +85,7 @@ const Filter = () => {
       placeholder="Min"
     />
     
-    {/* Max Price Input */}
+    
     <input
       type="number"
       className="w-1/2 p-2 border rounded-md"
@@ -84,6 +95,23 @@ const Filter = () => {
     />
   </div>
 </div>
+
+<div className="mt-4 px-4">
+                <h2 className="text-xl font-bold text-gray-800">Distributors</h2>
+                <div className="ml-4">
+                {distributors.map((distributor) => (
+    <p 
+        key={distributor} 
+        className={`cursor-pointer text-gray-800 hover:text-blue-500 ${
+            distributorFilter === distributor ? "font-bold text-blue-500" : ""
+        }`} 
+        onClick={() => handleDistributorChange(distributor)}
+    >
+        {distributor}
+    </p>
+))}
+                </div>
+            </div>
 <button 
   onClick={handleClearFilters} 
   className="w-1/2 p-2 border rounded-md bg-gray-200 hover:bg-gray-300 transition"

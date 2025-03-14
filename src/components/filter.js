@@ -47,7 +47,7 @@ const Filter = () => {
     <div
       className={`fixed top-0 left-0 bg-white shadow-lg w-80 h-full border-r border-gray-300 transition-transform duration-300 ${
         statusFilter ? "translate-x-0" : "-translate-x-full"
-      }`}
+      }`} style={{ zIndex: 1000 }}
     >
       <div className="flex justify-between items-center p-5 border-b">
         <h2 className="text-black text-lg font-semibold">Filters</h2>

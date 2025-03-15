@@ -10,14 +10,16 @@ import prevIcon from "../assets/icon-previous.svg";
 import nextIcon from "../assets/icon-next.svg";
 
 const Detail = () => {
-  const { slug } = useParams();
+  const {slug}  = useParams();
   const [detail, setDetail] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [value, setValue] = useState(0);
   const dispatch = useDispatch();
+  console.log(slug);
 
-  useEffect(() => {
+  useEffect(() => { 
     const findDetail = products.find((product) => product.slug === slug);
+   
     if (findDetail) {
       setDetail(findDetail);
     } else {

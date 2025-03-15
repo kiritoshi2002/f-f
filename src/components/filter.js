@@ -73,6 +73,7 @@ const Filter = () => {
           value={sortingOrder}
           onChange={handleSortChange}
         >
+          <option value="">Select</option>
           <option value="LowToHigh">Low to High</option>
           <option value="HighToLow">High to Low</option>
         </select>
@@ -121,7 +122,7 @@ const Filter = () => {
       </div>
       <button
         onClick={handleClearFilters}
-        className="w-1/2 p-2 border rounded-md bg-gray-200 hover:bg-gray-300 transition"
+        className=" w-1/2 p-2 border rounded-md bg-gray-200 hover:bg-gray-300 transition mx-auto flex justify-center"
       >
         CLEAR FILTERS
       </button>

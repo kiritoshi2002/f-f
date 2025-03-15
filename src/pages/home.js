@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { useSelector } from "react-redux";
 import Header from "../components/header";
 import ProductCart from "../components/productCart";
 import { products } from "../products";
+import { QueryContext } from "../components/layout"; 
 
 const Home = () => {
-  const [query, setQuery] = useState("");
+  const { query } = useContext(QueryContext); // ✅ Get query from context
   const sortingOrder = useSelector((store) => store.cart.sortingOrder);
   const minPrice = useSelector((store) => store.cart.minPrice);
   const maxPrice = useSelector((store) => store.cart.maxPrice);
@@ -15,10 +16,9 @@ const Home = () => {
 
   const getFilteredItems = (query, items) => {
     if (!query) return items;
-    return items.filter(
-      (product) =>
-        product.name.toLowerCase().includes(query.toLowerCase()) ||
-        product.price.toString().includes(query)
+    return items.filter((product) =>
+      product.name.toLowerCase().includes(query.toLowerCase()) ||
+      product.price.toString().includes(query)
     );
   };
 
@@ -52,7 +52,7 @@ const Home = () => {
 
   return (
     <>
-      <Header query={query} setQuery={setQuery} />
+      <Header /> {/* ✅ No need to pass query/setQuery */}
       <div className="p-4 mt-12 bg-[#f4f4f4] px-5">
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 no-scrollbar">
           {filteredProducts.length > 0 ? (

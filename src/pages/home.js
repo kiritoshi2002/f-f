@@ -45,29 +45,23 @@ const Home = () => {
   }
 
   return (
-    <>
-      <Header query={query} setQuery={setQuery} />
-      <CartTab />
-      <Filter />
-
-      <div
-        className={`p-4 mt-12 bg-[#f4f4f4] px-5 transition-transform duration-300 ${
-          isFilterOpen ? "ml-64" : "ml-0"
-        }`}
-      >
-        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 no-scrollbar">
-          {filteredProducts.length > 0 ? (
-            filteredProducts.map((product, key) => (
-              <div key={key} className="flex justify-center">
-                <ProductCart data={product} />
-              </div>
-            ))
-          ) : (
-            <p className="text-center col-span-full text-gray-500"> No products found. </p>
-          )}
-        </div>
-      </div>
-    </>
+  <>
+  <Header query={query} setQuery={setQuery} />
+  <CartTab />
+  <Filter />
+  <div className={`p-4 mt-12 bg-[#f4f4f4] px-5 transition-all duration-400 ${ isFilterOpen ? "ml-64" : "ml-0" }`} >
+  
+  <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 no-scrollbar">
+      {filteredProducts.length > 0 ? (filteredProducts.map((product, key) =>
+      (<div key={key} className="flex justify-center"> <ProductCart data={product} /> </div> ))
+     ) : (
+     <p className="text-center col-span-full text-gray-500"> No products found. </p>
+     )}
+  </div>
+  
+  </div>
+    
+  </>
   );
 };
 

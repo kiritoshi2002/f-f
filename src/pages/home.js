@@ -6,16 +6,13 @@ import { products } from "../products";
 import CartTab from "../components/cartTab";
 import Filter from "../components/filter";
 
-
-
 const Home = () => {
   const [query, setQuery] = useState("");
   const sortingOrder = useSelector((store) => store.cart.sortingOrder);
   const minPrice = useSelector((store) => store.cart.minPrice);
   const maxPrice = useSelector((store) => store.cart.maxPrice);
-  const distributorFilter = useSelector(
-    (store) => store.cart.distributorFilter
-  );
+  const distributorFilter = useSelector((store) => store.cart.distributorFilter);
+  const isFilterOpen = useSelector((store) => store.cart.statusFilter); 
 
   const getFilteredItems = (query, items) => {
     if (!query) return items;
@@ -36,29 +33,28 @@ const Home = () => {
   }
 
   if (minPrice) {
-    filteredProducts = filteredProducts.filter(
-      (product) => product.price >= parseFloat(minPrice)
-    );
+    filteredProducts = filteredProducts.filter( (product) => product.price >= parseFloat(minPrice) );
   }
 
   if (maxPrice) {
-    filteredProducts = filteredProducts.filter(
-      (product) => product.price <= parseFloat(maxPrice)
-    );
+    filteredProducts = filteredProducts.filter( (product) => product.price <= parseFloat(maxPrice) );
   }
 
   if (distributorFilter) {
-    filteredProducts = filteredProducts.filter(
-      (product) => product.distributor === distributorFilter
-    );
+    filteredProducts = filteredProducts.filter( (product) => product.distributor === distributorFilter );
   }
 
   return (
     <>
-      <Header query={query} setQuery={setQuery}/>
-      <CartTab/>
-      <Filter/>
-      <div className="p-4 mt-12 bg-[#f4f4f4] px-5" >
+      <Header query={query} setQuery={setQuery} />
+      <CartTab />
+      <Filter />
+
+      <div
+        className={`p-4 mt-12 bg-[#f4f4f4] px-5 transition-transform duration-300 ${
+          isFilterOpen ? "ml-64" : "ml-0"
+        }`}
+      >
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 no-scrollbar">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product, key) => (
@@ -67,9 +63,7 @@ const Home = () => {
               </div>
             ))
           ) : (
-            <p className="text-center col-span-full text-gray-500">
-              No products found.
-            </p>
+            <p className="text-center col-span-full text-gray-500"> No products found. </p>
           )}
         </div>
       </div>
